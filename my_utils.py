@@ -1,4 +1,4 @@
-def get_column(file_name, query_column, query_value, result_column):
+def get_column(file_name, query_column, query_value, result_column=1):
     result_list = []
     try:
         with open(file_name, "r") as file:
@@ -9,7 +9,7 @@ def get_column(file_name, query_column, query_value, result_column):
                     #print_fires.py has indexing start at 1 for the columns, but python indexing starts at 0-- subtract 1
                         #to get indexing to match
     except FileNotFoundError:
-        print(f"File '{file_path}' not found.")
+        print(f"File '{file_name}' not found.")
     except Exception as e:
         print(f"An error occurred: {e}")
                     
