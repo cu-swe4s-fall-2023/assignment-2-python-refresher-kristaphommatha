@@ -1,18 +1,37 @@
 import my_utils as utils
-import sys
+import argparse
 
-flag = int(sys.argv[1])
-country= sys.argv[3]
-county_column = int(sys.argv[2])
-result_column = int(sys.argv[4])
-file_name = 'Agrofood_co2_emission.csv'
+def main():
+    parser = argparse.ArgumentParser(description = 'Searches through a file given a query column, query value, and result columns'
+                                                   ' and outputs the row index to find the wanted result',
+                                    prog = 'get_columns')
 
-if flag == 0:
-    fires = utils.get_column(file_name,county_column,country)
-elif flag == 1:
-    fires = utils.get_column(file_name,county_column,country,result_column)
-else:
-    print('Invalid input')
+    parser.add_argument('--file_name',
+                        type = str,
+                        help = 'Input name of file to parse',
+                        required = True)
+
+    parser.add_argument('--qc',
+                        type = int,
+                        help = 'Index of query column to search, starting from index 1',
+                        required = True)
+
+    parser.add_argument('--qv',
+                        type = str,
+                        help = 'Value to search for in query column',
+                        required = True)
+
+    parser.add_argument('--rc',
+                        type = int,
+                        help = 'Index of result column to search, starting from index 1',
+                        nargs = '?',
+                        const = 1,
+                        default = 3)
+
+    args = parser.parse_args()
     
-
-print(fires)
+    fires = utils.get_column(args.file_name, args.qc, args.qv, args.rc)
+    
+    print(fires)
+if __name__ == '__main__':
+    main()
