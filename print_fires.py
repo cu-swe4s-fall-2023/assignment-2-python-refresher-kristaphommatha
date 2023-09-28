@@ -1,6 +1,6 @@
 import my_utils as utils
 import argparse
-
+import sys
 
 def main():
 
@@ -46,16 +46,16 @@ def main():
         fires = utils.get_column(args.file_name, args.qc, args.qv, args.rc)
     except FileNotFoundError:
         print('Could not find ' + args.file_name + ' in current directory.')
-        return
+        sys.exit(1)
     except PermissionError:
         print('Can not read ' + args.file_name + '.')
-        return
+        sys.exit(2)
     except IndexError:
         print('Query Column or Result Column input exceeds columns in file.')
-        return
+        sys.exit(3)
     except Exception as e:
         print('An unknown error occured.')
-        return
+        sys.exit(4)
 
     print(fires)
 
