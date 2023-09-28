@@ -22,3 +22,14 @@ Takes user input for file name as --file_name, query column as --qc, query value
 ## run.sh
 
 Runs 3 test cases: 1 successful case, 1 case with a file that does not exist, and 1 case with an input that exceeds the number of columns in the file.
+
+# v.2 changes
+## Best Practices changes
+- Updated python files to follow pep8 style guide
+- Implemented system exit codes to indicate error
+- Implemented main function in print_fires.py to call math_lib.py functions
+- Updated print_fires.py to take in user arguments using argparse
+
+## Functionality changes
+- Updated get_columns function to return a list of integers
+- Added input validation into print_fires.py
