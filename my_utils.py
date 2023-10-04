@@ -17,25 +17,49 @@ def get_column(file_name, query_column, query_value, result_column=3):
 
 def get_mean(ints):
     cSum = 0
-    for i in ints:
-        cSum += i
-    mean = cSum / len(ints)
+    try:
+        for i in ints:
+            cSum += i
+    except Exception as e:
+        return None
+    try:
+        mean = cSum / len(ints)
+    except ZeroDivisionError:
+        return 0
+    except Exception as e:
+        return None
     return mean
 
 
 def get_median(ints):
-    middle = len(ints) / 2
-    if len(ints) % 2 == 0:
-        med = (ints[middle - 1] + ints[middle]) / 2
-    else:
-        med = ints[middle]
+    middle = int(len(ints) / 2)
+    try:
+        if len(ints) % 2 == 0:
+            med = (ints[middle - 1] + ints[middle]) / 2
+        else:
+            med = ints[middle]
+    except TypeError:
+        return None
+    except Exception as e:
+        return None
+        
     return med
 
 
 def get_stdev(ints):
     mean = get_mean(ints)
     diffSum = 0
-    for i in ints:
-        diffSum += (mean - i)**2
-    stdev = math.sqrt(diffSum / len(ints))
+    try:
+        for i in ints:
+            diffSum += (mean - i)**2
+    except TypeError:
+        return None
+    except Exception as e:
+        return None
+    try:
+        stdev = math.sqrt(diffSum / len(ints))
+    except ZeroDivisionError:
+        return 0
+    except Exception as e:
+        return None
     return stdev
