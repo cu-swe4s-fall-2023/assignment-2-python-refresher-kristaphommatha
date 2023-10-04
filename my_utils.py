@@ -16,10 +16,10 @@ def get_column(file_name, query_column, query_value, result_column=3):
 
 
 def get_mean(ints):
-    csum = 0
-    for i in range(len(ints)):
-        csum += i
-    mean = csum / len(ints)
+    sum = 0
+    for i in len(ints):
+        sum += i
+    mean = sum / len(ints)
     return mean
 
 
@@ -35,7 +35,7 @@ def get_median(ints):
 def get_stdev(ints):
     mean = get_mean(ints)
     diffSum = 0
-    for i in range(len(ints)):
+    for i in len(ints):
         diffSum += (mean - ints[i])**2
     stdev = math.sqrt(diffSum / len(ints))
     return stdev
