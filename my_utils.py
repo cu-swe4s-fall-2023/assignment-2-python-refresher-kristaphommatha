@@ -1,3 +1,6 @@
+import math
+
+
 def get_column(file_name, query_column, query_value, result_column=3):
     result_list = []
 
@@ -10,3 +13,29 @@ def get_column(file_name, query_column, query_value, result_column=3):
                 # converts str to float first bec of decimal values
                 result_list.append(int(float_convert))
     return result_list
+
+
+def get_mean(ints):
+    sum = 0
+    for i in len(ints):
+        sum += i
+    mean = sum / len(ints)
+    return mean
+
+
+def get_median(ints):
+    middle = len(ints) / 2
+    if len(ints) % 2 == 0:
+        med = (ints[middle - 1] + ints[middle]) / 2
+    else:
+        med = ints[middle]
+    return med
+
+
+def get_stdev(ints):
+    mean = get_mean(ints)
+    diffSum = 0
+    for i in len(ints):
+        diffSum += (mean - ints[i])**2
+    stdev = math.sqrt(diffSum / len(ints))
+    return stdev
