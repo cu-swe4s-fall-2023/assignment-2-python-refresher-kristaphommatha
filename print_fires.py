@@ -38,6 +38,10 @@ def main():
                             const=1,
                             default=3)
 
+        parser.add_argument('--op',
+                            choices=['mean', 'median', 'stdev'],
+                            help='Operation of choice on output array')
+
         args = parser.parse_args()
     except Exception as e:
         print('Invalid input')
@@ -58,9 +62,18 @@ def main():
         print('An unknown error occured.')
         sys.exit(4)
 
+    print('Output List:')
     print(fires)
+
+    if args.op == 'mean':
+        print('Mean: ' + str(utils.get_mean(fires)))
+
+    if args.op == 'median':
+        print('Mean: ' + str(utils.get_median(fires)))
+
+    if args.op == 'stdev':
+        print('Mean: ' + str(utils.get_stdev(fires)))
 
 
 if __name__ == '__main__':
-
     main()
