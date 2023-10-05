@@ -24,22 +24,19 @@ def get_mean(ints):
         return None
     try:
         mean = cSum / len(ints)
-    except ZeroDivisionError:
-        return 0
     except Exception as e:
         return None
     return mean
 
 
 def get_median(ints):
+    sortedInts = sorted(ints)
     middle = int(len(ints) / 2)
     try:
         if len(ints) % 2 == 0:
-            med = (ints[middle - 1] + ints[middle]) / 2
+            med = (sortedInts[middle - 1] + sortedInts[middle]) / 2
         else:
-            med = ints[middle]
-    except TypeError:
-        return None
+            med = sortedInts[middle]
     except Exception as e:
         return None
         
@@ -58,8 +55,6 @@ def get_stdev(ints):
         return None
     try:
         stdev = math.sqrt(diffSum / len(ints))
-    except ZeroDivisionError:
-        return 0
     except Exception as e:
         return None
     return stdev
