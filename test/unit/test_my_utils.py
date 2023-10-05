@@ -1,4 +1,6 @@
 import sys
+sys.path.insert(0, '../../src')  # noqa
+
 import my_utils
 import unittest
 import random
