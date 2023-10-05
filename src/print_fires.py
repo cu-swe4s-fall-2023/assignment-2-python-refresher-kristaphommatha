@@ -69,10 +69,10 @@ def main():
         print('Mean: ' + str(utils.get_mean(fires)))
 
     if args.op == 'median':
-        print('Mean: ' + str(utils.get_median(fires)))
+        print('Median: ' + str(utils.get_median(fires)))
 
     if args.op == 'stdev':
-        print('Mean: ' + str(utils.get_stdev(fires)))
+        print('Std Dev: ' + str(utils.get_stdev(fires)))
 
 
 if __name__ == '__main__':
