@@ -27,7 +27,7 @@ jobs:
           python test_print_fires.py
 
   run_style_check:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash -l {0}
