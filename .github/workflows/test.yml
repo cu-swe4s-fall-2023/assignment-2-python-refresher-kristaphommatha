@@ -13,7 +13,7 @@ jobs:
           activate-environment: hw5
           environment-file: environment.yml
       - run: |
-          cd ../test/unit
+          cd test/unit
           python test_my_utils.py
   run_func_tests:
     runs-on: ubuntu-latest
@@ -23,7 +23,7 @@ jobs:
           activate-environment: hw5
           environment-file: environment.yml
       - run: |
-          cd ../../test/func
+          cd test/func
           python test_print_fires.py
 
   run_style_check:
@@ -38,6 +38,6 @@ jobs:
           activate-environment: hw5
           environment-file: environment.yml
       - run: |
-          cd ../../src
+          cd src
           pycodestyle my_utils.py
           pycodestyle print_fires.py
