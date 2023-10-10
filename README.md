@@ -65,3 +65,6 @@ Runs 3 test cases: 1 successful case, 1 case with a file that does not exist, an
 - Added unit tests to test mean, median, and mode functions
 - Added functional tests to test the expected outputs of print_fires.py
 
+# v. 4 changes
+## Continuous Integration
+- Implemented continuous integration to run automatically run unit, functional, and style tests on future pushes and pull requests
