@@ -1,4 +1,3 @@
----
 name: tests
 on:
   push:
@@ -28,7 +27,7 @@ jobs:
       activate-environment: hw5
       environment-file: ../../environment.yml
     run: |
-      cd ../test/func
+      cd ../../test/func
       python test_print_fires.py
 
   run_style_check:
@@ -41,4 +40,7 @@ jobs:
     with:
       activate-environment: hw5
       environment-file: ../../environment.yml
-      - run: pycodestyle $(git ls-files "*.py")
+      - run: |
+        cd ../../src
+        pycodestyle my_utils.py
+        pycodestyle print_fires.py
