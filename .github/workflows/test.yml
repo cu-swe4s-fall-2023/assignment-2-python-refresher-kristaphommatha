@@ -40,7 +40,7 @@ jobs:
     with:
       activate-environment: hw5
       environment-file: ../../environment.yml
-      - run: |
+      run: |
         cd ../../src
         pycodestyle my_utils.py
         pycodestyle print_fires.py
