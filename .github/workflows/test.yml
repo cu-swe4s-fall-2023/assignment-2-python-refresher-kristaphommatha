@@ -24,16 +24,16 @@ jobs:
           environment-file: environment.yml
       - run: |
           cd test/func
-          python test_print_fires.py
+          bash test_print_fires.sh
 
   run_style_check:
     runs-on: ubuntu-latest
     defaults:
       run:
-        shell: bash -l {0}
+        shell: bash -el {0}
     steps:
       - uses: actions/checkout@v2
-      - uses: conda-incubator/setup-miniconda@v2
+      - uses: mamba-org/setup-micromamba@v1
         with:
           activate-environment: hw5
           environment-file: environment.yml
