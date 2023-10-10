@@ -39,7 +39,7 @@ def get_median(ints):
             med = sortedInts[middle]
     except Exception as e:
         return None
-        
+
     return med
 
 
