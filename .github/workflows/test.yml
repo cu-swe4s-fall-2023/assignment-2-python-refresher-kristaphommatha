@@ -1,5 +1,4 @@
----
-name: unit tests
+name: tests
 on:
   push:
     branches:
@@ -28,5 +27,20 @@ jobs:
       activate-environment: hw5
       environment-file: ../../environment.yml
     run: |
-      cd ../test/func
+      cd ../../test/func
       python test_print_fires.py
+
+  run_style_check:
+    defaults:
+      run:
+        shell: bash -l {0}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: conda-incubator/setup-miniconda@v2
+    with:
+      activate-environment: hw5
+      environment-file: ../../environment.yml
+      - run: |
+        cd ../../src
+        pycodestyle my_utils.py
+        pycodestyle print_fires.py
