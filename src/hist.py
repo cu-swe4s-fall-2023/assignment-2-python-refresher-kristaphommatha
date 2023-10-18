@@ -68,7 +68,9 @@ def main():
         print('Invalid input')
         return
 
-    result = make_hist("../data_presentations/txts/" + args.file_name, "../data_presentations/pngs/" + args.out_name, args.t, args.x, args.y)
+    result = make_hist("../data_presentations/txts/" + args.file_name,
+                       "../data_presentations/pngs/" + args.out_name,
+                       args.t, args.x, args.y)
     if result == -1:
         print(args.file_name + " does not exist")
         sys.exit(1)
