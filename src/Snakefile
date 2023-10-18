@@ -1,0 +1,43 @@
+COUNTRY1 = "Afghanistan"
+COUNTRY2 = "Croatia"
+COUNTRY3 = "Portugal"
+
+rule all:
+    input:
+        COUNTRY1 + ".png",
+        COUNTRY2 + ".png",
+        COUNTRY3 + ".png"
+
+rule make_histograms:
+    input:
+        COUNTRY1 + ".txt",
+        COUNTRY2 + ".txt",
+        COUNTRY3 + ".txt"
+    output:
+        COUNTRY1 + ".png",
+        COUNTRY2 + ".png",
+        COUNTRY3 + ".png"
+    conda:
+        "../environment.yml"
+    shell:
+        "python hist.py --file_name " + COUNTRY1 + ".txt --out_name " + COUNTRY1 + ".png --t 'Savanna Fires vs Frequency' --x 'Savanna Fires' \n"
+        "python hist.py --file_name " + COUNTRY2 + ".txt --out_name " + COUNTRY2 + ".png --t 'Savanna Fires vs Frequency' --x 'Savanna Fires' \n"
+        "python hist.py --file_name " + COUNTRY3 + ".txt --out_name " + COUNTRY3 + ".png --t 'Savanna Fires vs Frequency' --x 'Savanna Fires' \n"
+
+rule make_txts:
+    input:
+        "Agrofood_co2_emission.csv"
+    output:
+        COUNTRY1 + ".txt",
+        COUNTRY2 + ".txt",
+        COUNTRY3 + ".txt"
+    shell:
+        "python get_data.py --file_name {input} --qc 1 --qv " + COUNTRY1 + " --rc 3 \n"
+        "python get_data.py --file_name {input} --qc 1 --qv " + COUNTRY2 + " --rc 3 \n"
+        "python get_data.py --file_name {input} --qc 1 --qv " + COUNTRY3 + " --rc 3 \n"
+
+rule emission_data:
+    output:
+        "Agrofood_co2_emission.csv"
+    shell:
+        "wget -O Agrofood_co2_emission.csv 'https://docs.google.com/uc?export=download&id=1Wytf3ryf9EtOwaloms8HEzLG0yjtRqxr'"
