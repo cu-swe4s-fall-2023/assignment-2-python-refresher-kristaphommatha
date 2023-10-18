@@ -7,7 +7,7 @@ def get_data(file_name, qc, qv, rc):
     data = utils.get_column(file_name, qc, qv, rc)
 
     dataString = [str(i) for i in data]
-    toWrite = ",".join(dataString)
+    toWrite = "\n".join(dataString)
 
     newFile = qv + ".txt"
 
