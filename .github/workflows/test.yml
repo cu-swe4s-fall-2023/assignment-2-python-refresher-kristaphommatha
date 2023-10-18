@@ -9,8 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: mamba-org/setup-micromamba@v1
         with:
-          activate-environment: hw5
+          activate-environment: hw6
           environment-file: environment.yml
       - run: |
           cd test/unit
@@ -19,8 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: mamba-org/setup-micromamba@v1
         with:
-          activate-environment: hw5
+          activate-environment: hw6
           environment-file: environment.yml
       - run: |
           cd test/func
@@ -35,7 +37,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: mamba-org/setup-micromamba@v1
         with:
-          activate-environment: hw5
+          activate-environment: hw6
           environment-file: environment.yml
       - run: |
           cd src

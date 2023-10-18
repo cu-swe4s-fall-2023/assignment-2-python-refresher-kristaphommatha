@@ -1,5 +1,6 @@
-name: hw5
+name: hw6
 channels:
   - conda-forge
 dependencies:
+  - matplotlib
   - pycodestyle
