@@ -4,26 +4,33 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-jobs:
+jobs:     
   run_unit_tests:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -el {0}
     steps:
       - uses: actions/checkout@v2
       - uses: mamba-org/setup-micromamba@v1
         with:
-          activate-environment: hw6
           environment-file: environment.yml
+          environment-name: hw6
       - run: |
           cd test/unit
           python test_my_utils.py
+          
   run_func_tests:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -el {0}
     steps:
       - uses: actions/checkout@v2
       - uses: mamba-org/setup-micromamba@v1
         with:
-          activate-environment: hw6
           environment-file: environment.yml
+          environment-name: hw6
       - run: |
           cd test/func
           bash test_print_fires.sh
@@ -37,8 +44,8 @@ jobs:
       - uses: actions/checkout@v2
       - uses: mamba-org/setup-micromamba@v1
         with:
-          activate-environment: hw6
           environment-file: environment.yml
+          environment-name: hw6
       - run: |
           cd src
           pycodestyle my_utils.py
