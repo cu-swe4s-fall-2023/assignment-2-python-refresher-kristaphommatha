@@ -4,7 +4,16 @@ import sys
 
 
 def get_data(file_name, qc, qv, rc):
-    data = utils.get_column(file_name, qc, qv, rc)
+    try:
+        data = utils.get_column(file_name, qc, qv, rc)
+    except FileNotFoundError:
+        return -1
+    except PermissionError:
+        return -2
+    except IndexError:
+        return -3
+    except Exception as e:
+        return None
 
     dataString = [str(i) for i in data]
     toWrite = "\n".join(dataString)
@@ -52,7 +61,19 @@ def main():
         print('Invalid input')
         return
 
-    get_data(args.file_name, args.qc, args.qv, args.rc)
+    result = get_data(args.file_name, args.qc, args.qv, args.rc)
+    if result == -1:
+        print('Could not find ' + args.file_name + ' in current directory.')
+        sys.exit(1)
+    if result == -2:
+        print('Can not read ' + args.file_name + '.')
+        sys.exit(2)
+    if result == -3:
+        print('Query Column or Result Column input exceeds columns in file.')
+        sys.exit(3)
+    if result is None:
+        print('An unknown error occured.')
+        sys.exit(4)
 
 
 if __name__ == '__main__':
