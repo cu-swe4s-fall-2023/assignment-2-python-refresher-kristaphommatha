@@ -18,10 +18,11 @@ def get_data(file_name, qc, qv, rc):
     dataString = [str(i) for i in data]
     toWrite = "\n".join(dataString)
 
-    newFile = qv + ".txt"
+    newFile = "../data_presentations/txts/" + qv + ".txt"
 
     with open(newFile, "w") as file:
         file.write(toWrite)
+    return 1
 
 
 def main():
