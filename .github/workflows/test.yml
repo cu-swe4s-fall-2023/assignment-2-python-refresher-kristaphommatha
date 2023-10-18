@@ -4,23 +4,7 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-jobs:
-  test_installations:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash -el {0}
-    steps:
-      - uses: actions/checkout@v2
-      - uses: mamba-org/setup-micromamba@v1
-        with:
-          environment-file: environment.yml
-          environment-name: hw6
-      - run: |
-          conda list matplotlib
-          conda list pycodestyle
-          micromamba list matplotlib
-          
+jobs:     
   run_unit_tests:
     runs-on: ubuntu-latest
     defaults:
@@ -38,6 +22,9 @@ jobs:
           
   run_func_tests:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -el {0}
     steps:
       - uses: actions/checkout@v2
       - uses: mamba-org/setup-micromamba@v1
