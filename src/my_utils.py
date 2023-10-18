@@ -1,4 +1,8 @@
 import math
+import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # noqa
+import matplotlib.pyplot as plt
 
 
 def get_column(file_name, query_column, query_value, result_column=3):
@@ -58,3 +62,27 @@ def get_stdev(ints):
     except Exception as e:
         return None
     return stdev
+
+
+def make_hist(data_file, out_file, title, x, y):
+    D = []
+    try:
+        for line in open(data_file):
+            D.append(float(line))
+    except FileNotFoundError:
+        return -1
+    except PermissionError:
+        return -2
+    except Exception as e:
+        return None
+
+    fig, ax = plt.subplots()
+    ax.hist(D)
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.set_xlabel(x)
+    ax.set_ylabel(y)
+    ax.set_title(title)
+
+    plt.savefig(out_file, bbox_inches='tight')
+    return 1
