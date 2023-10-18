@@ -1,6 +1,8 @@
 name: hw6
 channels:
   - conda-forge
+  - bioconda
 dependencies:
   - matplotlib
   - pycodestyle
+  - snakemake
